@@ -33,6 +33,9 @@ class Movie < ApplicationRecord
     Rails.cache.delete 'movies'
     self.last(n.to_i).each do |movie|
       $redis.set("user_movie_#{movie.id}_count", movie.read_count.to_i + rand(10))
+
+      movie.visit_count = movie.read_count.to_i
+      movie.save validate: false
     end
   end
 

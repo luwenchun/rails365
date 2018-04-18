@@ -21,6 +21,9 @@ class Article < ApplicationRecord
   def self.increment_random_read_count(n)
     self.last(n.to_i).each do |article|
       $redis.set("user_#{article.id}_count", article.read_count.to_i + rand(10))
+
+      article.visit_count = article.read_count.to_i
+      article.save validate: false
     end
   end
 
