@@ -7,7 +7,7 @@ App.web = App.cable.subscriptions.create "WebChannel",
 
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
-    if data.length
+    if window.screen.width > 800 and data.length
       json_data = JSON.parse(data)
       notice = new PNotify
         title: json_data["title"]

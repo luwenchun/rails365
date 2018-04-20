@@ -28,7 +28,7 @@
             <span><%= "会员（还有 #{distance_of_time_in_words(Time.now, @user.pay_expired_at)}到期）" %></span>
           </p>
         <% else %>
-          <p>
+          <p class="text-center">
             <span><%= "会员（已过期 #{distance_of_time_in_words(@user.pay_expired_at, Time.now)}）" %></span>
           </p>
         <% end %>
