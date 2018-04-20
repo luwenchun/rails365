@@ -1,7 +1,8 @@
 (($) ->
   $.fn.image_uploader = () ->
     _this = $(this)
-    _this.on 'click', ->
+    _this.on 'click', (e) ->
+      e.preventDefault()
       $("#image").click()
     $("#image").bind('fileuploadadd', (e, data) ->
       _this.find(".fa").removeClass('fa-image').addClass('fa-circle-o-notch fa-spin')
@@ -17,5 +18,5 @@
       url: "/photos"
       type: "PATCH"
       formData: {}
-      
+
 ) jQuery
