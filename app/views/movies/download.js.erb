@@ -1,0 +1,7 @@
+<% if @error %>
+  swal({title: "<%= @error %>"}, function() {
+    window.location.href = "<%= vip_path %>";
+  });
+<% else %>
+  window.location.href = "<%= @movie.mp4_url %>";
+<% end %>

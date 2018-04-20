@@ -1,22 +1,6 @@
 .panel.panel-default
   .panel-body
-    = render 'movies/hide_right'
-    - cache [@movie, "playlist-title"] do
-      div.text-left.article-desc
-        span.dian = link_to "首页", root_path
-        span.dian = link_to @movie.serial.name, all_movies_path(@movie.serial.slug) if @movie.serial
-        = link_to @movie.playlist.try(:name), playlist_path(@movie.playlist)
-    div
-      h1.my-title = @movie.title
-      div.article-desc
-        - if @movie.is_paid?
-          small.my-badge.my-badge-danger Pro
-          span.dian
-        span.mr5 发布于
-        span.dian = custom_timeago_tag @movie.created_at
-        span #{@movie.read_count} 次观看
-        - if can? :update, @movie
-            = link_to "编辑", edit_movie_path(@movie), class: 'before-dian'
+    = render 'movie_title'
     .article_content
       div.video-block.mb20
         #dplayer
@@ -34,7 +18,7 @@
           = link_to '<<上一集', movie_path(@prev_movie), class: "pull-left"
         - if @next_movie.present?
           = link_to '下一集>>', movie_path(@next_movie), class: "pull-right"
-      .text-center.heart-green 扫码打赏 16.8 元起加我微信拉入微信群
+      / .text-center.heart-green 扫码打赏 16.8 元起加我微信拉入微信群
 
       hr
       / 为了兼容以前的数据内容

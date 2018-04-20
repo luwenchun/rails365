@@ -7,7 +7,9 @@ script src="https://cdn.bootcss.com/dplayer/1.22.2/DPlayer.min.js"
       = render 'left_show'
     - else
       - if !user_signed_in?
-        = render 'movie_title'
+        .panel.panel-default style="margin-bottom: 0"
+          .panel-body
+            = render 'movie_title'
         .jumbotron.text-center
           h4
             span 不好意思，查看 
@@ -16,7 +18,9 @@ script src="https://cdn.bootcss.com/dplayer/1.22.2/DPlayer.min.js"
           p
             a.btn.btn-primary.primary-btn href="/users/sign_in" 登录
       - else
-        = render 'movie_title'
+        .panel.panel-default style="margin-bottom: 0"
+          .panel-body
+            = render 'movie_title'
         .jumbotron.text-center
           h4
             span 不好意思，查看 
@@ -46,13 +50,11 @@ script src="https://cdn.bootcss.com/dplayer/1.22.2/DPlayer.min.js"
                 small.my-badge.my-badge-danger Pro
 
     = render 'shared/wechatpay'
-    = render 'shared/alipay'
-    = render 'shared/public_account'
     .panel.panel-default
-      .panel-heading.playlist-angle
+      .panel-heading
         strong 相似的视频
         i class="fa fa-angle-down"
-      .panel-body.hidden
+      .panel-body
         - cache @recommend_movies do
           .home-video
             - @recommend_movies.each do |movie|

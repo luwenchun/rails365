@@ -1,5 +1,6 @@
 - unless params[:search].present?
-  = render 'shared/site_info_home_desc'
+  - if !mobile_device?
+    = render 'shared/site_info_home_desc'
   .white-bg.home-container
     - cache @movies do
       div.pt15.home-video

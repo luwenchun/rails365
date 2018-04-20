@@ -108,7 +108,7 @@ class User < ApplicationRecord
         user.save
       elsif user.movie_history.present?
         $redis.lpush "movies_#{user.id}_history", user.movie_history
-        $redis.ltrim "movies_#{user.id}_history", 0, 99
+        $redis.ltrim "movies_#{user.id}_history", 0, 299
       end
       user.active_weight = user.movie_history.size.to_i rescue 0 + user.like_original_movies.count.to_i + user.comments.count.to_i
       user.save

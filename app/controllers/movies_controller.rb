@@ -1,7 +1,7 @@
 class MoviesController < ApplicationController
-  before_action :set_movie, only: [:show]
+  before_action :set_movie, only: [:show, :download]
   before_action :find_changed_movie, only: [:edit, :update, :destroy, :like]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :like]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :like, :download]
   authorize_resource
 
   def index
@@ -51,12 +51,10 @@ class MoviesController < ApplicationController
 
     # @site_info_home_desc = Playlist.fetch_by_id(@movie.playlist_id).try(:desc)
 
-    if !(current_user && current_user.super_admin?)
-      @movie.increment_read_count
+    @movie.increment_read_count
 
-      # 记录哪些视频被浏览过
-      @movie.remember_visit_id
-    end
+    # 记录哪些视频被浏览过
+    @movie.remember_visit_id
 
     @playlists = Cache.article_playlists
 
@@ -106,6 +104,12 @@ class MoviesController < ApplicationController
     @movie.destroy
     @movie.create_activity :destroy, owner: current_user
     redirect_to movies_path, notice: '视频成功删除!'
+  end
+
+  def download
+    if !@movie.has_read_priv?(current_user)
+      @error = '只有 Pro 学员才可以下载视频'
+    end
   end
 
   def like

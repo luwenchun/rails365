@@ -34,12 +34,10 @@ class ArticlesController < ApplicationController
 
     @books = Group.fetch_by_id(@article.group_id).fetch_books
 
-    if !(current_user && current_user.super_admin?)
-      @article.increment_read_count
+    @article.increment_read_count
 
-      # 记录哪些文章被浏览过
-      @article.remember_visit_id
-    end
+    # 记录哪些文章被浏览过
+    @article.remember_visit_id
   end
 
   def new

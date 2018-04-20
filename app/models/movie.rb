@@ -90,7 +90,7 @@ class Movie < ApplicationRecord
 
       # 浏览记录
       $redis.lpush "movies_#{current_user.id}_history", self.id
-      $redis.ltrim "movies_#{current_user.id}_history", 0, 99
+      $redis.ltrim "movies_#{current_user.id}_history", 0, 299
 
       ActionCable.server.broadcast \
         'web_channel', { title: '努力学习',

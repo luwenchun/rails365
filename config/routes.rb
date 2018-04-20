@@ -26,7 +26,9 @@ Rails.application.routes.draw do
 
   resources :articles, concerns: [:commentable, :like]
   resources :orders, only: [:index, :new, :create]
-  resources :movies, concerns: [:commentable, :like]
+  resources :movies, concerns: [:commentable, :like] do
+    get :download, on: :member
+  end
   get "/movies/all/:name", to: "movies#index", as: :all_movies
   get "/movies/q/:filter", to: "movies#index", as: :q_movies
   resources :softs, concerns: [:commentable, :like]
