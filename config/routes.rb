@@ -33,7 +33,9 @@ Rails.application.routes.draw do
   get "/movies/q/:filter", to: "movies#index", as: :q_movies
   resources :softs, concerns: [:commentable, :like]
   resources :groups, only: [:index, :show]
-  resources :playlists, only: [:index, :show]
+  resources :playlists, only: [:index, :show] do
+    get :download, on: :member
+  end
   # resources :apps, only: [:index]
   resources :users, only: [:show, :index] do
     member do

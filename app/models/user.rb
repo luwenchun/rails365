@@ -157,6 +157,11 @@ class User < ApplicationRecord
     self.company_name.present? ? "#{self.position} @ #{self.company_name}" : self.position
   end
 
+  def quarter_pro?
+    return false if !is_paid?
+    orders.sum(&:month).to_i >= 3
+  end
+
   def self.set_paid(user_id, number, money)
     user = self.find(user_id)
     Rails.cache.delete "current_user_[#{user.id}]"

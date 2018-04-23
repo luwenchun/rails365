@@ -107,7 +107,7 @@ class MoviesController < ApplicationController
   end
 
   def download
-    if !@movie.has_read_priv?(current_user)
+    if !(user_signed_in? && (current_user.is_paid? || current_user.super_admin?))
       @error = '只有 Pro 学员才可以下载视频'
     end
   end

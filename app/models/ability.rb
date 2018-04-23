@@ -28,6 +28,7 @@ class Ability
       can :read, Soft
       can :read, Playlist
       can :download, Movie
+      can :download, Playlist
     end
   end
 
@@ -42,5 +43,6 @@ class Ability
     can :read, Soft
     can :read, Playlist
     can :download, Movie
+    can :download, Playlist
   end
 end

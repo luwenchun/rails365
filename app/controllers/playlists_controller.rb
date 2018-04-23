@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
-  before_action :set_playlist, only: [:show]
+  before_action :set_playlist, only: [:show, :download]
+  before_action :authenticate_user!, only: [:download]
   authorize_resource
 
   def index
@@ -16,6 +17,12 @@ class PlaylistsController < ApplicationController
 
   def show
     @title = @playlist.name
+  end
+
+  def download
+    if !(user_signed_in? && (current_user.quarter_pro? || current_user.super_admin?))
+      @error = "只有季度学员（累积订阅 3 个月）才可以一键下载"
+    end
   end
 
   private

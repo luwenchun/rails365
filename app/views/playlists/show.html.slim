@@ -1,5 +1,9 @@
 .white-bg
   - cache @playlist do
+    .clearfix
+      = link_to download_playlist_path(@playlist), class: 'pull-right text-muted', remote: true do
+        i.fa.fa-download
+        | 一键下载所有视频
     .page-header
       h4.text-primary.title-header.text-center
         = @playlist.name

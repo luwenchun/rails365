@@ -1,0 +1,9 @@
+<% if @error %>
+  swal({title: "<%= @error %>"}, function() {
+    window.location.href = "<%= vip_path %>";
+  });
+<% else %>
+  <% @playlist.movies.each do |movie| %>
+    window.open("<%= movie.mp4_url %>");
+  <% end %>
+<% end %>
