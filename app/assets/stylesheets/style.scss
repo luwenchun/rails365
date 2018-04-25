@@ -8,6 +8,7 @@ body {
   font-size: 14px;
   font-family: 微软雅黑, "Open Sans", sans-serif;
   background: #f4f5f5;
+  -webkit-font-smoothing: antialiased;
 }
 
 .img100 {
@@ -1085,6 +1086,7 @@ Only Needed in Multi-Coloured Variation
 
 .panel {
   border: none;
+  box-shadow: 0 1px 3px rgba(26,26,26,.1);
 }
 
 /* bootstrap navbar */

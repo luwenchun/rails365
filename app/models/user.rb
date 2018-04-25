@@ -116,10 +116,10 @@ class User < ApplicationRecord
 
     $redis.del "user_view_ids"
 
-    ActionCable.server.broadcast \
-      'web_channel', { title: '祝贺',
-                       content: "目前 Top 5 活跃会员分别是 #{User.order(active_weight: :desc, id: :desc).limit(5).map(&:hello_name).map{ |name| "<strong>#{name}</strong>" }.join(', ')}"
-    }.to_json
+    # ActionCable.server.broadcast \
+    #   'web_channel', { title: '祝贺',
+    #                    content: "目前 Top 5 活跃会员分别是 #{User.order(active_weight: :desc, id: :desc).limit(5).map(&:hello_name).map{ |name| "<strong>#{name}</strong>" }.join(', ')}"
+    # }.to_json
 
   end
 

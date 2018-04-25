@@ -26,6 +26,10 @@
     = render partial: 'comments/form', locals: { object: @article }
     div#comment_box
       = render 'comments/comments'
+    coffee:
+      jQuery ->
+        $('h1, h2, h3, h4, h5').each (header) ->
+          $(this).attr('id', $(this).text())
   .col-md-4.article-right
     = render 'shared/relative_books'
     .panel.panel-default.hidden-xs

@@ -3,7 +3,7 @@
 = bootstrap_form_for @article, html: {class: "form-horizontal"}, remote: true do |f|
   = f.error_messages
 
-  = f.text_field :title, value: (@article.new_record? ? Article.last.try(:title) : @article.title), class: "form-control", required: true
+  = f.text_field :title, value: @article.title, class: "form-control", required: true
 
   = render 'shared/toolbar'
 

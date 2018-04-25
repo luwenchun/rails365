@@ -4,6 +4,6 @@
   });
 <% else %>
   <% @playlist.movies.each do |movie| %>
-    window.open("<%= movie.mp4_url %>");
+    window.open("<%= j movie.mp4_url %>");
   <% end %>
 <% end %>

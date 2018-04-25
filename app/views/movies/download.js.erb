@@ -3,5 +3,5 @@
     window.location.href = "<%= vip_path %>";
   });
 <% else %>
-  window.location.href = "<%= @movie.mp4_url %>";
+  window.location.href = "<%= j @movie.mp4_url %>";
 <% end %>
