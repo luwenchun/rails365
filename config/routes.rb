@@ -67,4 +67,6 @@ Rails.application.routes.draw do
   get '/about-us', to: 'home#about_us'
   get '/vip', to: 'home#vip'
   get '/visit', to: 'visit#index'
+  get '/privacy', to: 'home#privacy'
+  get '/terms', to: 'home#terms'
 end

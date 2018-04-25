@@ -61,4 +61,12 @@ class HomeController < ApplicationController
   def vip
     @title = '订阅本站'
   end
+
+  def privacy
+    @title = "隐私条款"
+  end
+
+  def terms
+    @title = "服务条款"
+  end
 end
