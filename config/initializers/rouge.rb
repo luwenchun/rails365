@@ -10,7 +10,8 @@ module Redcarpet
       # github.com/vmg/redcarpet/blob/master/lib/redcarpet/render_man.rb#L9
 
       def initialize(extensions = {})
-        super extensions.merge(link_attributes: { target: '_blank' })
+        # super extensions.merge(link_attributes: { target: '_blank' })
+        super
       end
 
       # rouge redcarpet plugin已有相应的功能
@@ -32,7 +33,7 @@ module Redcarpet
       end
 
       def header(text, header_level)
-        "<h#{header_level} class='markdown_header'>#{text}</h#{header_level}>"
+        "<h#{header_level} id='#{ActionView::Base.full_sanitizer.sanitize(text)}' class='markdown_header'>#{text}</h#{header_level}>"
       end
     end
   end
