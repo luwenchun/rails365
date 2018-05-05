@@ -4,9 +4,9 @@ class CommentsController < ApplicationController
     resource, id = request.path.split('/')[1, 2]
     @commentable = resource.singularize.classify.constantize.find(id)
     @comment = @commentable.comments.new params.require(:comment).permit(:body).merge(user: current_user)
-    @comment.save
-
-    @comment.create_activity :create, owner: current_user, recipient: @commentable
+    if @comment.save
+      @comment.create_activity :create, owner: current_user, recipient: @commentable
+    end
 
     @comments = @commentable.fetch_comments
   end

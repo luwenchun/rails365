@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def newest
-    @users = User.order(id: :desc).page(params[:page]).per(100)
+    @users = User.order(id: :desc).limit(100)
 
     @title = '最新学员'
     render 'index'
