@@ -14,6 +14,7 @@ gem 'activestorage'
 gem 'bootsnap'
 gem 'sass-rails'
 gem 'uglifier'
+gem 'therubyracer'
 gem 'coffee-rails'
 gem 'pg'
 

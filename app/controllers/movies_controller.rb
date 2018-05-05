@@ -22,6 +22,18 @@ class MoviesController < ApplicationController
       @movies = Movie.where(is_original: true).order('id DESC').page(params[:page]).per(20)
     end
 
+    if params[:sort] == 'created_at_asc'
+      @movies = @movies.reorder('id ASC')
+    end
+
+    if params[:sort] == 'created_at_desc'
+      @movies = @movies.reorder('id DESC')
+    end
+
+    if params[:sort] == 'hot_desc'
+      @movies = @movies.reorder('visit_count DESC')
+    end
+
     @serials = Rails.cache.fetch("serials") do
       Serial.order(weight: :desc).to_a
     end

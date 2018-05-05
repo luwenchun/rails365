@@ -3,6 +3,15 @@
 
   hr
 
+  p.text-right.text-muted
+    = link_to request.params.merge(sort: "created_at_asc"), class: "hint--bottom", "aria-label": "创建时间从早到晚" do
+      i class="fa fa-sort-amount-asc mr10 #{params[:sort] == 'created_at_asc' ? 'blue' : nil}" aria-hidden="true"
+    = link_to request.params.merge(sort: "created_at_desc"), class: "hint--bottom", "aria-label": "创建时间从晚到早" do
+      i class="fa fa-sort-amount-desc mr10 #{params[:sort] == 'created_at_desc' ? 'blue' : nil}" aria-hidden="true"
+    = link_to request.params.merge(sort: "hot_desc"), class: "hint--bottom #{params[:sort] == 'hot_desc' ? 'blue' : nil}", "aria-label": "最热门" do
+      i class="fa fa-sort-desc mr10 #{params[:sort] == 'hot_desc' ? 'blue' : nil}" aria-hidden="true"
+    | 排列顺序
+
   p.text-center.text-muted 共找到 #{@movies.total_count} 个视频
 
   - cache @movies do
