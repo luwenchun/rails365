@@ -1,7 +1,7 @@
 .white-bg
   - cache @playlist do
     .clearfix
-      = link_to download_playlist_path(@playlist), class: 'pull-right text-muted', remote: true do
+      = link_to download_playlist_path(@playlist), class: 'pull-right text-muted hint--bottom', "aria-label": "可能会同时打开多个窗口", remote: true do
         i.fa.fa-download
         | 一键下载所有视频
     .page-header
