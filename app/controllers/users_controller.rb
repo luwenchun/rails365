@@ -9,6 +9,13 @@ class UsersController < ApplicationController
     @title = '活跃学员'
   end
 
+  def newest
+    @users = User.order(id: :desc).page(params[:page]).per(100)
+
+    @title = '最新学员'
+    render 'index'
+  end
+
   def show
     @favourite_movies = @user.like_original_movies.order('id DESC').page(params[:page])
   end

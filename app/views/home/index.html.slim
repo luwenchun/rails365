@@ -58,6 +58,7 @@
             strong 最新学员
         .panel-body.text-left
           = render partial: 'shared/new_users', locals: { users: @new_users }
+          = link_to '更多', newest_users_path, class: "more"
     - cache @active_weight_users do
       .panel.panel-default
         .panel-heading

@@ -3,7 +3,7 @@
     .panel.panel-default
       .panel-heading
         div.custom-panel-heading.pl15
-          span = @group.name
+          strong = @group.name
       .panel-body
         - cache @articles do
           - @articles.each do |article|

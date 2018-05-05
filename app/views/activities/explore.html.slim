@@ -17,6 +17,7 @@
         .m-widget4
           - cache @movies do
             = render partial: 'shared/new_collection', locals: { records: @movies }
+        = link_to '更多', movies_path, class: 'more'
     .panel.panel-default
       .panel-heading
         div.custom-panel-heading
@@ -25,6 +26,7 @@
         .m-widget4
           - cache @articles do
             = render partial: 'shared/new_collection', locals: { records: @articles }
+        = link_to '更多', articles_path, class: 'more'
 
     - cache @new_users do
       .panel.panel-default
@@ -33,6 +35,7 @@
             strong 最新学员
         .panel-body.text-left
           = render partial: 'shared/new_users', locals: { users: @new_users }
+          = link_to '更多', newest_users_path, class: "more"
     - cache @active_weight_users do
       .panel.panel-default
         .panel-heading
@@ -40,6 +43,7 @@
             strong Top 5 活跃学员
         .panel-body.text-left
           = render partial: 'shared/new_users', locals: { users: @active_weight_users }
+          = link_to '更多', users_path, class: 'more'
     .sticker
       = render 'shared/qqgroup'
       = render 'shared/follow'

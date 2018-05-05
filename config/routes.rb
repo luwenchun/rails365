@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     collection do
       get :change_profile
       post :update_profile
+      get :newest
     end
   end
 

@@ -2,7 +2,12 @@
   .col-md-12
     .panel.panel-default
       .panel-heading
-        strong Top 100 活跃学员
+        strong
+          | Top 100
+          - if action_name == 'newest'
+            | &nbsp;最新学员
+          - else
+            | &nbsp;活跃学员
         div.pull-right 目前已有 #{User.count} 位学员加入学习
       .panel-body
         .row
