@@ -31,13 +31,15 @@
         .panel-heading
           div.custom-panel-heading
             strong 最新学员
-        = render partial: 'shared/new_users', locals: { users: @new_users }
+        .panel-body.text-left
+          = render partial: 'shared/new_users', locals: { users: @new_users }
     - cache @active_weight_users do
       .panel.panel-default
         .panel-heading
           div.custom-panel-heading
             strong Top 5 活跃学员
-        = render partial: 'shared/new_users', locals: { users: @active_weight_users }
+        .panel-body.text-left
+          = render partial: 'shared/new_users', locals: { users: @active_weight_users }
     .sticker
       = render 'shared/qqgroup'
       = render 'shared/follow'

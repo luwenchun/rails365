@@ -4,6 +4,7 @@
     - cache @movies do
       div.pt15.home-video
         = render partial: 'movies/index', object: @movies
+    = link_to '更多', movies_path, class: "more"
 
 .row
   .col-md-8.article-left
@@ -49,18 +50,22 @@
                 .m-widget4__info.custom-activity
                   span.dian.m-widget4__sub = custom_timeago_tag activity.created_at
                   = render_activity activity
+        = link_to '更多', explore_activities_path, class: "more"
     - cache @new_users do
       .panel.panel-default
         .panel-heading
           div.custom-panel-heading
             strong 最新学员
-        = render partial: 'shared/new_users', locals: { users: @new_users }
+        .panel-body.text-left
+          = render partial: 'shared/new_users', locals: { users: @new_users }
     - cache @active_weight_users do
       .panel.panel-default
         .panel-heading
           div.custom-panel-heading
             strong Top 5 活跃学员
-        = render partial: 'shared/new_users', locals: { users: @active_weight_users }
+        .panel-body.text-left
+          = render partial: 'shared/new_users', locals: { users: @active_weight_users }
+          = link_to '更多', users_path, class: "more"
     /.panel.panel-default
     /  .panel-heading
     /    div.custom-panel-heading

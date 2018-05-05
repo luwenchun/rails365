@@ -1653,3 +1653,16 @@ code {
 .btn-dark:hover {
   background: #292D2E;
 }
+
+.more {
+  display: block;
+  margin: 10px auto 10px;
+  width: 96px;
+  border: 1px solid $blue;
+  border-radius: 4px;
+  color: $blue;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 24px;
+}
