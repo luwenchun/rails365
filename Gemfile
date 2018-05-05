@@ -14,7 +14,8 @@ gem 'activestorage'
 gem 'bootsnap'
 gem 'sass-rails'
 gem 'uglifier'
-gem 'therubyracer'
+gem 'execjs'
+gem 'therubyracer', :platforms => :ruby
 gem 'coffee-rails'
 gem 'pg'
 

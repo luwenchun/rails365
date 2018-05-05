@@ -661,6 +661,7 @@ DEPENDENCIES
   devise
   devise-async
   exception-track
+  execjs
   factory_bot_rails
   faraday
   friendly_id
