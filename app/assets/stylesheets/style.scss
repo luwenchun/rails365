@@ -1139,6 +1139,19 @@ Only Needed in Multi-Coloured Variation
 .navbar-custom .navbar-nav > .active > a {
   color: $blue;
   background-color:transparent;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  &:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: $blue;
+    content: '';
+    opacity: 1;
+  }
 }
 
 .navbar-custom .navbar-nav > li > a:hover,
