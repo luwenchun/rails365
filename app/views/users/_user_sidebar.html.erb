@@ -33,22 +33,6 @@
           </p>
         <% end %>
       <% end %>
-      <% if current_user == @user %>
-        <% unless @user.email.include?("from_github") %>
-          <p class="text-center">
-            <%= link_to edit_user_registration_path do %>
-              <i class="fa fa-user-circle-o"></i>
-              修改密码
-            <% end %>
-          </p>
-        <% end %>
-        <p class="text-center">
-          <%= link_to change_profile_users_path do %>
-            <i class="fa fa-pencil-square-o"></i>
-            修改个人信息
-          <% end %>
-        </p>
-      <% end %>
     <% end %>
 
     <hr>

@@ -1,12 +1,26 @@
-.white-bg
-  .page-header.text-center
-    h4 修改信息
-  = bootstrap_form_for current_user, url: update_profile_users_path, method: :post, html: {class: "form-horizontal"} do |f|
-    = f.error_messages
+.row
+  .col-md-4
+    .white-bg
+      ul.nav.nav-pills.nav-stacked
+        li role="presentation" class="active"
+          = link_to change_profile_users_path, class: 'btn-block' do
+            i.fa.fa-user-circle-o
+            |  基本信息
+        - unless current_user.email.include?("from_github")
+          li role="presentation" class=""
+            = link_to edit_user_registration_path, class: 'btn-block' do
+              i.fa.fa-user-circle-o
+              |  修改密码
+  .col-md-8
+    .white-bg
+      .page-header.text-center
+        h4 修改信息
+      = bootstrap_form_for current_user, url: update_profile_users_path, method: :post, html: {class: "form-horizontal"} do |f|
+        = f.error_messages
 
-    = f.text_field :username, autofocus: true, class: "form-control"
-    = f.text_field :nickname, class: "form-control"
-    = f.text_field :company_name, class: "form-control"
-    = f.text_field :position, class: "form-control"
-    = f.image_file_field :avatar
-    = f.submit '保存', class: "btn btn-primary", "data-disable-with" => '正在保存...'
+        = f.text_field :username, autofocus: true, class: "form-control"
+        = f.text_field :nickname, class: "form-control"
+        = f.text_field :company_name, class: "form-control"
+        = f.text_field :position, class: "form-control"
+        = f.image_file_field :avatar
+        = f.submit '保存', class: "btn btn-primary", "data-disable-with" => '正在保存...'
