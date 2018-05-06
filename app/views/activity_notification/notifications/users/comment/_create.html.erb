@@ -1,0 +1,16 @@
+<li class="media">
+  <a class="pull-left avatar-image">
+    <%= image_tag notification.notifier.letter_avatar_url(40), width: 40, height: 40 %>
+  </a>
+  <div class="media-body">
+    <div class="media-heading article-title">
+      <a href="<%= user_path(notification.notifier) %>" class="username"><%= notification.notifier.printable_notifier_name %></a>
+      <span class="dian"></span>
+      评论了你的<%= notification.group.class.model_name.human %>
+      <span class="dian"></span>
+      <%= link_to notification.group.title, notification.group, class: "hint--bottom", "aria-label": "#{notification.group.title}" %>
+    </div>
+    <div class="content-html"><%= markdown notification.notifiable.body if notification.notifiable.body.present? %></div>
+    <div class="footer-html"><%= custom_timeago_tag notification.created_at %></div>
+  </div>
+</li>

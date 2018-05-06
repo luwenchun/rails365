@@ -13,6 +13,23 @@ class Comment < ApplicationRecord
 
   validates :body, :user, presence: true
 
+  acts_as_notifiable :users,
+    # Notification targets as :targets is a necessary option
+    # Set to notify to author and users commented to the article, except comment owner self
+    targets: ->(comment, key) {
+      ([comment.commentable.user] - [comment.user]).uniq
+    },
+    # Path to move when the notification is opened by the target user
+    # This is an optional configuration since activity_notification uses polymorphic_path as default
+    notifiable_path: :movie_notifiable_path,
+    notifier: :user,
+    group: :commentable,
+    tracked: { only: [:create] }
+
+  def movie_notifiable_path
+    movie_path(movie)
+  end
+
   after_create :publish_create
 
   private

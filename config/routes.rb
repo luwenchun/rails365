@@ -1,6 +1,7 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'registrations', omniauth_callbacks: 'users/omniauth_callbacks' }
+  notify_to :users, with_devise: :users
   root to: 'home#index'
 
   authenticate :user, ->(user) { user.super_admin? } do

@@ -1,0 +1,5 @@
+- if user_signed_in?
+  li.mr10
+    = link_to open_all_user_notifications_path(current_user), method: :post, remote: true, class: "#{current_user.has_unopened_notifications? ? 'heart-green' : nil}" do
+      i class="fa fa-bell-o mr10" aria-hidden="true"
+      = current_user.unopened_notification_count if current_user.has_unopened_notifications?

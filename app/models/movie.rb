@@ -21,6 +21,10 @@ class Movie < ApplicationRecord
   has_many :comments, as: 'commentable'
   cache_has_many :comments, :inverse_name => :commentable
 
+  has_many :commented_users, through: :comments, source: :user
+
+  acts_as_notification_group printable_name: ->(movie) { "视频 #{movie.title}" }
+
   scope :original, -> { where(is_original: true) }
 
   mount_uploader :image, VideoUploader

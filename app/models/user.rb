@@ -6,6 +6,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :async, authentication_keys: [:login]
   devise :omniauthable, omniauth_providers: [:github]
 
+  acts_as_target
+
+  acts_as_notifier printable_name: :hello_name
+
   include IdentityCache
 
   act_as_liker

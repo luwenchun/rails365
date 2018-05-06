@@ -24,6 +24,7 @@
                 a href="/users" 活跃学员
               li
                 a href="/vip" 订阅本站
+          = render 'shared/notification_bell'
 
         - if user_signed_in?
           ul.nav.navbar-nav.navbar-right.pull-right style="margin-right: 25px"
@@ -111,9 +112,9 @@
           li
             a href="" class='search_btn hint--bottom' aria-label="搜索文章或视频"
               i class="fa fa-search" aria-hidden="true"
-          li.mr10
-            a href=""
-              i class="fa fa-bell-o" aria-hidden="true"
+
+          = render 'shared/notification_bell'
+
           li
             = link_to new_article_path, class: "btn btn-primary primary-btn" do
               |  写文章

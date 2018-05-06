@@ -18,6 +18,9 @@ class Article < ApplicationRecord
   has_many :comments, as: 'commentable'
   cache_has_many :comments, :inverse_name => :commentable
 
+  has_many :commented_users, through: :comments, source: :user
+  acts_as_notification_group printable_name: ->(article) { "文章 #{article.title}" }
+
   def self.increment_random_read_count(n)
     self.last(n.to_i).each do |article|
       $redis.set("user_#{article.id}_count", article.read_count.to_i + rand(10))

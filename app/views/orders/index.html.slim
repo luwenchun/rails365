@@ -51,11 +51,11 @@
               = I18n.l order.created_at, :format => :long
               | （#{custom_timeago_tag order.created_at}）
             td
-              = I18n.l order.expired_at, :format => :long
-              - if order.expired_at > Time.now
+              = I18n.l order.expired_at, :format => :long if order.expired_at
+              - if order.expired_at && order.expired_at > Time.now
                 | （还有 #{distance_of_time_in_words(Time.now, order.expired_at)}到期）
               - else
-                | （已过期 #{distance_of_time_in_words(order.expired_at, Time.now)}）
+                | （已过期 #{distance_of_time_in_words(order.expired_at, Time.now) if order.expired_at}）
             td = order.month
             - if current_user.super_admin?
               td = order.is_expired? ? '是' : '否'
@@ -80,9 +80,9 @@
               td = image_tag user.letter_avatar_url(100), alt: user.hello_name, size: "40x40", style: "border-radius: 50%"
               td = user.email
               td
-                = I18n.l user.created_at, :format => :long
+                = I18n.l user.created_at, :format => :long if user.created_at
                 | （#{custom_timeago_tag user.created_at}）
-              td = I18n.l user.pay_expired_at, :format => :long
-              td = distance_of_time_in_words(Time.now, user.pay_expired_at)
+              td = I18n.l user.pay_expired_at, :format => :long if user.pay_expired_at
+              td = distance_of_time_in_words(Time.now, user.pay_expired_at) if user.pay_expired_at
         .text-center
           = paginate @users

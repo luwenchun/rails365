@@ -160,5 +160,6 @@ gem 'groupdate'
 gem 'chartkick'
 
 gem 'public_activity'
+gem 'activity_notification'
 
 gem 'ransack'

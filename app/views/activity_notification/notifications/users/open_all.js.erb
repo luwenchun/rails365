@@ -1,0 +1,3 @@
+$(".notification_count").html("<span class=\"<%= 'unopened' if @target.has_unopened_notifications?(@index_options) %>\"><%= @target.unopened_notification_count(@index_options) %></span>");
+
+window.location.href = "<%= j user_notifications_path(current_user) %>"
